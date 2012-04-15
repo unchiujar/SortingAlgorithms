@@ -3,16 +3,16 @@ package org.unchiujar.algorithms.sorting;
 import java.util.LinkedHashMap;
 
 public class BubbleSort<K extends Comparable<K>, T> implements
-        SortingAlgorithm<K, T> {
+		SortingAlgorithm<K, T> {
 
-    @Override
-    public LinkedHashMap<K, T> sort(LinkedHashMap<K, T> data) {
-        Object[] keys = data.keySet().toArray();
-        boolean sorted = false;
-        while (!sorted ) {
-            sorted = true;
-            for (int i = 0; i < keys.length - 1; i++) {
-                if (((K) keys[i+1]).compareTo((K) keys[i]) < 0) {
+	@Override
+	public LinkedHashMap<K, T> sort(LinkedHashMap<K, T> data) {
+		Object[] keys = data.keySet().toArray();
+		boolean sorted = false;
+		while (!sorted) {
+			sorted = true;
+			for (int i = 0; i < keys.length - 1; i++) {
+				if (((K) keys[i + 1]).compareTo((K) keys[i]) < 0) {
                     // swap
                     Object temp = keys[i];
                     keys[i] = keys[i + 1];
