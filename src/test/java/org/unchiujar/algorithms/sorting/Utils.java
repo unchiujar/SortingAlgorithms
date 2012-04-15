@@ -67,6 +67,20 @@ public class Utils {
 				}
 				return data;
 			}
+		},
+		
+		GAUSSIAN {
+			@Override
+			LinkedHashMap<Integer, String> generateData(int length) {
+				LinkedHashMap<Integer, String> data = new LinkedHashMap<Integer, String>(
+						length);
+				for (int i = 0; i < length; i++) {
+					data.put((int)(new Random().nextGaussian()*Integer.MAX_VALUE), UUID.randomUUID()
+							.toString());
+				}
+				return data;
+			}
+			
 		};
 
 		abstract LinkedHashMap<Integer, String> generateData(int length);

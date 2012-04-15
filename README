@@ -2,32 +2,38 @@ Various implementations of sorting algorithms run with Caliper benchmarks.
 
 Test results for  a 10000 entries:
 
- 0% Scenario{vm=java, trial=0, benchmark=Bubble, distribution=SAWTOOTH, length=10000} 2685983.86 ns; σ=202770.39 ns @ 10 trials
- 8% Scenario{vm=java, trial=0, benchmark=Cocktail, distribution=SAWTOOTH, length=10000} 2781169.13 ns; σ=103621.69 ns @ 10 trials
-17% Scenario{vm=java, trial=0, benchmark=Quick, distribution=SAWTOOTH, length=10000} 6532897.14 ns; σ=26544.27 ns @ 3 trials
-25% Scenario{vm=java, trial=0, benchmark=Bubble, distribution=INCREASING, length=10000} 2244538.93 ns; σ=111259.74 ns @ 10 trials
-33% Scenario{vm=java, trial=0, benchmark=Cocktail, distribution=INCREASING, length=10000} 2275132.11 ns; σ=333347.28 ns @ 10 trials
-42% Scenario{vm=java, trial=0, benchmark=Quick, distribution=INCREASING, length=10000} 7323425.63 ns; σ=167882.79 ns @ 10 trials
-50% Scenario{vm=java, trial=0, benchmark=Bubble, distribution=DECREASING, length=10000} 739381692.00 ns; σ=192296028.10 ns @ 10 trials
-58% Scenario{vm=java, trial=0, benchmark=Cocktail, distribution=DECREASING, length=10000} 635396566.50 ns; σ=147650671.81 ns @ 10 trials
-67% Scenario{vm=java, trial=0, benchmark=Quick, distribution=DECREASING, length=10000} 6848484.36 ns; σ=921528.96 ns @ 10 trials
-75% Scenario{vm=java, trial=0, benchmark=Bubble, distribution=RANDOM, length=10000} 1168755813.50 ns; σ=119797730.45 ns @ 10 trials
-83% Scenario{vm=java, trial=0, benchmark=Cocktail, distribution=RANDOM, length=10000} 534586285.08 ns; σ=117052495.35 ns @ 10 trials
-92% Scenario{vm=java, trial=0, benchmark=Quick, distribution=RANDOM, length=10000} 10546669.48 ns; σ=1589785.59 ns @ 10 trials
+ 0% Scenario{vm=java, trial=0, benchmark=Bubble, distribution=SAWTOOTH, length=10000} 2464122.73 ns; σ=58315.84 ns @ 10 trials
+ 7% Scenario{vm=java, trial=0, benchmark=Cocktail, distribution=SAWTOOTH, length=10000} 2443487.02 ns; σ=134227.99 ns @ 10 trials
+13% Scenario{vm=java, trial=0, benchmark=Quick, distribution=SAWTOOTH, length=10000} 6035139.04 ns; σ=34245.25 ns @ 3 trials
+20% Scenario{vm=java, trial=0, benchmark=Bubble, distribution=INCREASING, length=10000} 2710417.46 ns; σ=1901.47 ns @ 3 trials
+27% Scenario{vm=java, trial=0, benchmark=Cocktail, distribution=INCREASING, length=10000} 2432222.76 ns; σ=144761.77 ns @ 10 trials
+33% Scenario{vm=java, trial=0, benchmark=Quick, distribution=INCREASING, length=10000} 6369847.33 ns; σ=473060.81 ns @ 10 trials
+40% Scenario{vm=java, trial=0, benchmark=Bubble, distribution=DECREASING, length=10000} 500904086.00 ns; σ=28878973.07 ns @ 10 trials
+47% Scenario{vm=java, trial=0, benchmark=Cocktail, distribution=DECREASING, length=10000} 439935725.50 ns; σ=19668318.93 ns @ 10 trials
+53% Scenario{vm=java, trial=0, benchmark=Quick, distribution=DECREASING, length=10000} 6298979.99 ns; σ=12556.17 ns @ 3 trials
+60% Scenario{vm=java, trial=0, benchmark=Bubble, distribution=RANDOM, length=10000} 805720381.00 ns; σ=101372302.37 ns @ 10 trials
+67% Scenario{vm=java, trial=0, benchmark=Cocktail, distribution=RANDOM, length=10000} 458095040.17 ns; σ=78166236.47 ns @ 10 trials
+73% Scenario{vm=java, trial=0, benchmark=Quick, distribution=RANDOM, length=10000} 8019573.25 ns; σ=69272.32 ns @ 3 trials
+80% Scenario{vm=java, trial=0, benchmark=Bubble, distribution=GAUSSIAN, length=10000} 471374132.75 ns; σ=63964856.35 ns @ 10 trials
+87% Scenario{vm=java, trial=0, benchmark=Cocktail, distribution=GAUSSIAN, length=10000} 274477826.00 ns; σ=2430619.83 ns @ 3 trials
+93% Scenario{vm=java, trial=0, benchmark=Quick, distribution=GAUSSIAN, length=10000} 4935825.79 ns; σ=328551.71 ns @ 10 trials
 
-distribution benchmark      ms linear runtime
-    SAWTOOTH    Bubble    2.69 =
-    SAWTOOTH  Cocktail    2.78 =
-    SAWTOOTH     Quick    6.53 =
-  INCREASING    Bubble    2.24 =
-  INCREASING  Cocktail    2.28 =
-  INCREASING     Quick    7.32 =
-  DECREASING    Bubble  739.38 ==================
-  DECREASING  Cocktail  635.40 ================
-  DECREASING     Quick    6.85 =
-      RANDOM    Bubble 1168.76 ==============================
-      RANDOM  Cocktail  534.59 =============
-      RANDOM     Quick   10.55 =
+benchmark distribution     ms linear runtime
+   Bubble     SAWTOOTH   2.46 =
+   Bubble   INCREASING   2.71 =
+   Bubble   DECREASING 500.90 ==================
+   Bubble       RANDOM 805.72 ==============================
+   Bubble     GAUSSIAN 471.37 =================
+ Cocktail     SAWTOOTH   2.44 =
+ Cocktail   INCREASING   2.43 =
+ Cocktail   DECREASING 439.94 ================
+ Cocktail       RANDOM 458.10 =================
+ Cocktail     GAUSSIAN 274.48 ==========
+    Quick     SAWTOOTH   6.04 =
+    Quick   INCREASING   6.37 =
+    Quick   DECREASING   6.30 =
+    Quick       RANDOM   8.02 =
+    Quick     GAUSSIAN   4.94 =
 
 vm: java
 trial: 0
