@@ -8,9 +8,10 @@ import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Quick<K extends Comparable<K>, T> implements
+public class QuickNonRecursive<K extends Comparable<K>, T> implements
 		SortingAlgorithm<K, T> {
-	private static final Logger LOG = LoggerFactory.getLogger(Quick.class);
+	private static final Logger LOG = LoggerFactory
+			.getLogger(QuickNonRecursive.class);
 
 	@Override
 	public LinkedHashMap<K, T> sort(LinkedHashMap<K, T> data) {
@@ -23,9 +24,30 @@ public class Quick<K extends Comparable<K>, T> implements
 	private Random rnd = new Random();
 
 	private Object[] quicksort(Object[] keys, int left, int right) {
-		if (left < right) {
-			// choose random pivot
-			int pivot = left + rnd.nextInt(right - left);
+
+		int[] pivotStack = new int[keys.length];
+		int pivotStackCursor = 0;
+		int pivot = left + rnd.nextInt(right - left);
+		// put pivot
+		pivotStack[pivotStackCursor++] = pivot;
+
+		while (pivotStack[0] != -1) {
+
+			pivot = sort(keys, left, right, pivot);
+			
+			pivotStack[pivotStackCursor++] = pivot;
+			
+			pivot = sort(keys, left, pivot-1, pivot);
+			
+			
+		}
+		return keys;
+	}
+
+	private int sort(Object[] keys, int left, int right, int pivot) {
+
+		while (left < right) {
+
 			int pivotValue = (Integer) keys[pivot];
 
 			// move pivot to the right
@@ -49,13 +71,9 @@ public class Quick<K extends Comparable<K>, T> implements
 			keys[storeIndex] = pivotValue;
 			pivot = storeIndex;
 
-			// sort smaller
-			quicksort(keys, left, pivot - 1);
-			// sort larger
-			quicksort(keys, pivot + 1, right);
 		}
 
-		return keys;
+		return pivot;
 	}
 
 }

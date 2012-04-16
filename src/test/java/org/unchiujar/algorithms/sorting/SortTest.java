@@ -12,7 +12,7 @@ import org.junit.Test;
 
 public abstract class SortTest {
 
-	private static final int LENGTH = 10;
+	private static final int LENGTH = 15;
 
 	public SortTest() {
 		super();

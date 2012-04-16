@@ -14,10 +14,9 @@ import com.google.caliper.SimpleBenchmark;
 
 public class SpeedTest extends SimpleBenchmark {
 
-	private static final Logger LOG = LoggerFactory
-			.getLogger(SpeedTest.class);
+	private static final Logger LOG = LoggerFactory.getLogger(SpeedTest.class);
 
-	@Param({ "10000"})
+	@Param({ "100000" })
 	private int length;
 	@Param
 	private Distribution distribution;
@@ -29,7 +28,7 @@ public class SpeedTest extends SimpleBenchmark {
 	private Cocktail<Integer, String> cocktail = new Cocktail<Integer, String>();
 
 	private Quick<Integer, String> quick = new Quick<Integer, String>();
-
+	private QuickLessSwap<Integer, String> quickLess = new QuickLessSwap<Integer, String>();
 
 	@Override
 	protected void setUp() throws Exception {
@@ -44,24 +43,30 @@ public class SpeedTest extends SimpleBenchmark {
 		Runner.main(SpeedTest.class, new String[] {});
 	}
 
-
-	public void timeBubble(int reps) throws Exception {
-		copy.putAll(values);
-		for (int i = 0; i < reps; i++) {
-			bubble.sort(copy);
-		}
-	}
-	public void timeCocktail(int reps) throws Exception {
-		copy.putAll(values);
-		for (int i = 0; i < reps; i++) {
-			cocktail.sort(copy);
-		}
-	}
-
+	// public void timeBubble(int reps) throws Exception {
+	// copy.putAll(values);
+	// for (int i = 0; i < reps; i++) {
+	// bubble.sort(copy);
+	// }
+	// }
+	// public void timeCocktail(int reps) throws Exception {
+	// copy.putAll(values);
+	// for (int i = 0; i < reps; i++) {
+	// cocktail.sort(copy);
+	// }
+	// }
+	//
 	public void timeQuick(int reps) throws Exception {
 		copy.putAll(values);
 		for (int i = 0; i < reps; i++) {
-			quick .sort(copy);
+			quick.sort(copy);
+		}
+	}
+
+	public void timeQuickSwapLess(int reps) throws Exception {
+		copy.putAll(values);
+		for (int i = 0; i < reps; i++) {
+			quickLess.sort(copy);
 		}
 	}
 
