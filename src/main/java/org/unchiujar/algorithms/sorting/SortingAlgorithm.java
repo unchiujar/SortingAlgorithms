@@ -1,8 +1,9 @@
 package org.unchiujar.algorithms.sorting;
 
-import java.util.LinkedHashMap;
+import java.util.Comparator;
 
-public interface SortingAlgorithm<K extends Comparable<K>, T> {
+public interface SortingAlgorithm<K> {
 
-    LinkedHashMap<K, T> sort(LinkedHashMap<K, T> data);
+    K[] sort(K[] data, Comparator<? super K> comparator);
+
 }

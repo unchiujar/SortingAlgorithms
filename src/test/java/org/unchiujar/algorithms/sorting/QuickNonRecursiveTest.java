@@ -1,8 +1,8 @@
 package org.unchiujar.algorithms.sorting;
 
 
-public class QuickTest extends SortTest {
-	Quick<Integer> quick = new Quick<Integer>();
+public class QuickNonRecursiveTest extends SortTest {
+	QuickNonRecursive<Integer> quick = new QuickNonRecursive<Integer>();
 
 	@Override
 	protected SortingAlgorithm<Integer> getAlgorithm() {

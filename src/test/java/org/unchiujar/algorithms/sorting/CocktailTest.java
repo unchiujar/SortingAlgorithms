@@ -2,10 +2,10 @@ package org.unchiujar.algorithms.sorting;
 
 
 public class CocktailTest extends SortTest {
-	Cocktail<Integer, String> cocktail = new Cocktail<Integer, String>();
+	Cocktail<Integer> cocktail = new Cocktail<Integer>();
 
 	@Override
-	protected SortingAlgorithm<Integer, String> getAlgorithm() {
+	protected SortingAlgorithm<Integer> getAlgorithm() {
 		return cocktail;
 	}
 

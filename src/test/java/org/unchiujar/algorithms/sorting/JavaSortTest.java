@@ -1,12 +1,11 @@
 package org.unchiujar.algorithms.sorting;
 
-
-public class QuickTest extends SortTest {
-	Quick<Integer> quick = new Quick<Integer>();
+public class JavaSortTest extends SortTest {
+	JavaSort<Integer> java = new JavaSort<Integer>();
 
 	@Override
 	protected SortingAlgorithm<Integer> getAlgorithm() {
-		return quick;
+		return java;
 	}
 
 }

@@ -6,10 +6,10 @@ import org.unchiujar.algorithms.sorting.Bubble;
 
 public class BubbleTest extends SortTest {
 
-	private Bubble<Integer, String> bubble = new Bubble<Integer, String>();
+	private Bubble<Integer> bubble = new Bubble<Integer>();
 
 	@Override
-	protected SortingAlgorithm<Integer, String> getAlgorithm() {
+	protected SortingAlgorithm<Integer> getAlgorithm() {
 		return bubble;
 	}
 

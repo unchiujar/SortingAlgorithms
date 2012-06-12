@@ -1,61 +1,50 @@
 package org.unchiujar.algorithms.sorting;
 
-import static org.unchiujar.algorithms.sorting.Utils.arrangeMap;
+import java.util.Comparator;
 
-import java.util.LinkedHashMap;
-import java.util.Random;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class Quick<K extends Comparable<K>, T> implements
-		SortingAlgorithm<K, T> {
-	private static final Logger LOG = LoggerFactory.getLogger(Quick.class);
-
+public class Quick<K> implements SortingAlgorithm<K> {
 	@Override
-	public LinkedHashMap<K, T> sort(LinkedHashMap<K, T> data) {
-		Object[] keys = data.keySet().toArray();
-		// create sorted result
-		keys = quicksort(keys, 0, keys.length - 1);
-		return arrangeMap(data, keys);
+	public K[] sort(K[] data, Comparator<? super K> comparator) {
+		return quicksort(data, comparator, 0, data.length - 1);
 	}
 
-	private Random rnd = new Random();
+	// private Random rnd = new Random();
 
-	private Object[] quicksort(Object[] keys, int left, int right) {
+	private K[] quicksort(K[] data, Comparator<? super K> comparator, int left,
+			int right) {
 		if (left < right) {
 			// choose random pivot
-			int pivot = left + rnd.nextInt(right - left);
-			int pivotValue = (Integer) keys[pivot];
+			int pivot = left + (right - left) / 2;// rnd.nextInt(right - left);
+			K pivotValue = data[pivot];
 
 			// move pivot to the right
-			keys[pivot] = keys[right];
-			keys[right] = pivotValue;
+			data[pivot] = data[right];
+			data[right] = pivotValue;
 			pivot = right;
 			int storeIndex = left;
 			// partition
 			for (int i = left; i < right; i++) {
 				// swap if bigger and before
-				if ((Integer) keys[i] < pivotValue) {
-					int temp = (Integer) keys[storeIndex];
-					keys[storeIndex] = keys[i];
-					keys[i] = temp;
+				if (comparator.compare(data[i], pivotValue) < 0) {
+					K temp = data[storeIndex];
+					data[storeIndex] = data[i];
+					data[i] = temp;
 					storeIndex++;
 				}
 
 			}
 
-			keys[pivot] = keys[storeIndex];
-			keys[storeIndex] = pivotValue;
+			data[pivot] = data[storeIndex];
+			data[storeIndex] = pivotValue;
 			pivot = storeIndex;
 
 			// sort smaller
-			quicksort(keys, left, pivot - 1);
+			quicksort(data, comparator, left, pivot - 1);
 			// sort larger
-			quicksort(keys, pivot + 1, right);
+			quicksort(data, comparator, pivot + 1, right);
 		}
 
-		return keys;
+		return data;
 	}
 
 }

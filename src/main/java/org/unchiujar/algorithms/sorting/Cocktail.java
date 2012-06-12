@@ -1,27 +1,24 @@
 package org.unchiujar.algorithms.sorting;
 
-import java.util.LinkedHashMap;
-import static org.unchiujar.algorithms.sorting.Utils.arrangeMap;
-public class Cocktail<K extends Comparable<K>, T> implements
-		SortingAlgorithm<K, T> {
+import java.util.Comparator;
+public class Cocktail<K> implements
+		SortingAlgorithm<K> {
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public LinkedHashMap<K, T> sort(LinkedHashMap<K, T> data) {
-		Object[] keys = data.keySet().toArray();
+	public K[] sort(K[] data, Comparator<? super K> comparator) {
 		boolean sorted = false;
-		int end = keys.length - 1;
+		int end = data.length - 1;
 		int begin = 0;
 		int lastSwapped = 0;
 
 		while (!sorted) {
 			sorted = true;
 			for (int i = begin; i < end; i++) {
-				if (((K) keys[i + 1]).compareTo((K) keys[i]) < 0) {
+				if (comparator.compare(data[i + 1],data[i]) < 0) {
 					// swap
-					Object temp = keys[i];
-					keys[i] = keys[i + 1];
-					keys[i + 1] = temp;
+					K temp = data[i];
+					data[i] = data[i + 1];
+					data[i + 1] = temp;
 					sorted = false;
 					lastSwapped = i;
 				}
@@ -32,11 +29,11 @@ public class Cocktail<K extends Comparable<K>, T> implements
 				end = lastSwapped;
 				sorted = true;
 				for (int i = end; i > begin; i--) {
-					if (((K) keys[i]).compareTo((K) keys[i - 1]) < 0) {
+					if (comparator.compare(data[i], data[i - 1]) < 0) {
 						// swap
-						Object temp = keys[i];
-						keys[i] = keys[i - 1];
-						keys[i - 1] = temp;
+						K temp = data[i];
+						data[i] = data[i - 1];
+						data[i - 1] = temp;
 						sorted = false;
 						lastSwapped = i;
 					}
@@ -47,6 +44,6 @@ public class Cocktail<K extends Comparable<K>, T> implements
 			}
 		}
 
-		return arrangeMap(data, keys);
+		return data;
 	}
 }
